@@ -130,11 +130,8 @@ morning-msg/
 如果这个项目帮你省了每天挠头想文案的时间——
 
 <p align="center">
-  <b>👉 把收款码图片放到 <code>coffee.png</code> 就能显示在此 👈</b>
+  <img src="coffee.jpg" width="200" alt="请我喝咖啡">
 </p>
-
-<!-- 替换为你的收款二维码 -->
-<!-- <p align="center"><img src="coffee.png" width="200"></p> -->
 
 半夜调 prompt、修农历 bug、跟 AI 斗智斗勇……代码免费，咖啡不免费 😄
 
