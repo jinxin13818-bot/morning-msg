@@ -1,5 +1,7 @@
 # 🌅 Morning Copy — Your Private Daily Greeting Broadcaster
 
+[中文](README.md) | English
+
 > Wake up, phone buzzes — a morning message that knows the lunar calendar, solar terms, and today's theme is already waiting for you.
 > Not generic copy-paste. AI-written, human-polished. **30 seconds, ready to record.**
 
