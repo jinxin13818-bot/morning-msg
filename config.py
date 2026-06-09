@@ -7,10 +7,10 @@ VAULT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__f
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = os.path.join(OUTPUT_DIR, "history.db")
 
-# --- DeepSeek API ---
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
-DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-DEEPSEEK_MODEL = "deepseek-chat"
+# --- LLM API（兼容任何 OpenAI 兼容接口：DeepSeek / OpenAI / LM Studio / Ollama 等）---
+LLM_API_KEY = os.environ.get("LLM_API_KEY", os.environ.get("DEEPSEEK_API_KEY", ""))
+LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "https://api.deepseek.com")
+LLM_MODEL = os.environ.get("LLM_MODEL", "deepseek-chat")
 
 # --- Telegram ---
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")

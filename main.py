@@ -12,7 +12,7 @@ import os
 from datetime import date, timedelta, datetime
 
 from calendar_utils import get_day_info
-from prompt import call_deepseek, build_generation_prompt, humanize
+from prompt import call_llm, build_generation_prompt, humanize
 from dedup import is_duplicate, save_text
 from push import send_telegram
 from config import MAX_GENERATION_RETRIES, OUTPUT_DIR
@@ -87,7 +87,7 @@ def generate(target_date: date) -> dict:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ]
-        raw_text = call_deepseek(messages)
+        raw_text = call_llm(messages)
         print(f"[GEN] 生成完成 ({len(raw_text)}字)")
 
         # Humanizer-zh 去 AI 味

@@ -1,24 +1,24 @@
-"""Prompt 构建 + DeepSeek API 调用 + Humanizer-zh 去 AI 味"""
+"""Prompt 构建 + LLM API 调用 + Humanizer-zh 去 AI 味"""
 
 import json
 import requests
-from config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
+from config import LLM_API_KEY, LLM_BASE_URL, LLM_MODEL
 
 
-def call_deepseek(messages: list[dict], temperature: float = 0.85, max_tokens: int = 400) -> str:
-    """调用 DeepSeek API，返回生成的文本"""
+def call_llm(messages: list[dict], temperature: float = 0.85, max_tokens: int = 400) -> str:
+    """调用 LLM API（兼容 OpenAI / DeepSeek / 任何兼容接口），返回生成的文本"""
     headers = {
-        "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+        "Authorization": f"Bearer {LLM_API_KEY}",
         "Content-Type": "application/json",
     }
     payload = {
-        "model": DEEPSEEK_MODEL,
+        "model": LLM_MODEL,
         "messages": messages,
         "temperature": temperature,
         "max_tokens": max_tokens,
     }
     resp = requests.post(
-        f"{DEEPSEEK_BASE_URL}/v1/chat/completions",
+        f"{LLM_BASE_URL}/v1/chat/completions",
         headers=headers,
         json=payload,
         timeout=60,
@@ -108,7 +108,7 @@ def humanize(original_text: str) -> str:
         {"role": "system", "content": HUMANIZER_SYSTEM_PROMPT},
         {"role": "user", "content": f"请重写以下文案：\n\n{original_text}"},
     ]
-    return call_deepseek(messages, temperature=0.9, max_tokens=400)
+    return call_llm(messages, temperature=0.9, max_tokens=400)
 
 
 if __name__ == "__main__":
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     print("=" * 50)
     print("原始生成:")
     print("=" * 50)
-    raw = call_deepseek(messages)
+    raw = call_llm(messages)
     print(raw)
     print()
 
